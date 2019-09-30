@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login', as: 'login'
   get '/signup', to: 'directors#new', as: 'signup'
 
+  #Actors Test
+  get '/test', to: 'actors#test', as: 'test'
 
   ###Application Routes ###
   get '/', to: 'application#welcome', as: 'welcome'
