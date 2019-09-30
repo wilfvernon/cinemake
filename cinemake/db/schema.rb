@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_134207) do
+ActiveRecord::Schema.define(version: 2019_09_30_151811) do
 
-  create_table "actors", force: :cascade do |t|
+  create_table "crew_members", force: :cascade do |t|
     t.string "birthday"
     t.integer "gender_id"
     t.string "place_of_birth"
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 2019_09_30_134207) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.string "type"
   end
 
   create_table "directors", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.string "country"
+    t.string "nationality"
     t.string "username"
     t.integer "password_digest"
     t.string "image"
