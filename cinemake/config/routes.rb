@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #Actors Test
-  get '/test', to: 'actors#get_actor_by_name', as 'test'
+  get '/test', to: 'actors#test', as: 'test'
 
   ###Application Routes ###
   get '/', to: 'application#welcome', as: 'welcome'
