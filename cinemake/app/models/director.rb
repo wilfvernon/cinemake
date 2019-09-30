@@ -4,7 +4,7 @@ validates :name, presence: true
 validates :age, presence: true
 validate :age_is_over_13
 validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-validate :username, presence: true, uniqueness: true
+validates :username, presence: true, uniqueness: true
 validates :password_digest, presence: true, confirmation: true
 
 def age_is_over_13

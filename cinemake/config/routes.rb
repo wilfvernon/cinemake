@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  ###Application Routes ###
+  get '/', to: 'application#welcome', as: 'welcome'
+  
   ###Session Routes
   get '/login', to: 'sessions#login', as: 'login'
   get '/signup', to: 'directors#new', as: 'signup'
@@ -7,10 +10,6 @@ Rails.application.routes.draw do
   #Actors Test
   get '/test', to: 'actors#test', as: 'test'
 
-  ###Application Routes ###
-  get '/', to: 'application#welcome', as: 'welcome'
-  get '/login', to: 'directors#login', as: 'login'
-  get '/signup', to: 'directors#new', as: 'signup'
 
   ###Directors Routes###
 
