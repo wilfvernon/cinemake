@@ -1,0 +1,9 @@
+<h1>Search For Talent</h1>
+
+<%= form_with url: crew_members_path do |f| %> 
+<%= f.label "Search" %>
+<%= f.text_field :search%>
+<%= f.select :category, options_for_select(["Actors", "Writers"]) %>
+<%= f.submit "Search" %>
+<% end %>
+
