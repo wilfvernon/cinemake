@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   #Actors Test
   get '/test', to: 'actors#test', as: 'test'
+  #Crew Members Test
+  get '/crew_members', to: 'crew_members#index', as: 'crew_members'
+  
 
   ###Application Routes ###
   get '/', to: 'application#welcome', as: 'welcome'
