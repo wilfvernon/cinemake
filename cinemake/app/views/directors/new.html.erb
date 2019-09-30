@@ -1,7 +1,23 @@
 <h1>Sign Up</h1>
-<%= form_with model: @director do |form| %>
+
+<%= form_with model: @director, url: directors_path, method: :post do |form| %>
+    
     <%= form.label :name %>
     <%= form.text_field :name %>
-    <%= form.label :country %>
-    <%= form.country_select :country %>
-<%end%>
+    <%= form.label :age %>
+    <%= form.number_field :age %><br><br>
+    <%= form.label :nationality %>
+    <%= form.country_select :nationality %><br><br>
+    <%= form.label :email%>
+    <%= form.text_field :email%><br><br>
+    <%= form.label :image, "Profile Image URL"%>
+    <%= form.text_field :image%><br><br><br><br><br>
+    <%= form.label :username %>
+    <%= form.text_field :username %><br><br>
+    <%= form.label :password %>
+    <%= form.password_field :password%><br><br>
+    <%= form.label :password_confirmation, "Confirm Password" %>
+    <%= form.password_field :password_confirmation %><br><br>
+    <%= form.submit "Create Account" %>
+
+<% end %>

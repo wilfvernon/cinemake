@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  ###Session Routes
+  get '/login', to: 'sessions#login', as: 'login'
+  get '/signup', to: 'directors#new', as: 'signup'
+
+
   ###Application Routes ###
   get '/', to: 'application#welcome', as: 'welcome'
   get '/login', to: 'directors#login', as: 'login'
@@ -17,7 +22,7 @@ Rails.application.routes.draw do
   get '/directors/:id/projects', to: 'projects#index', as: 'projects'
 
   ###Movies###
-  
+
 
 
 end
