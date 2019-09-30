@@ -1,2 +1,7 @@
 <h1>Sign Up</h1>
-<%= form_with model: @director%>
+<%= form_with model: @director do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :country %>
+    <%= form.country_select :country %>
+<%end%>
