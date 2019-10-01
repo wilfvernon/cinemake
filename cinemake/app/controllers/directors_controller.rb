@@ -1,4 +1,7 @@
 class DirectorsController < ApplicationController
+
+    before_action :valid?, except: [:new, :create]
+
     def new
         @director = Director.new
     end

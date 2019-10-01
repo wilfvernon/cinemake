@@ -8,9 +8,10 @@ class CrewMembersController < ApplicationController
     end
 
     def create
-        if CrewMember.id.indclude?(params[:id])
+        if CrewMember.ids.include?(params[:id])
             redirect_to crew_member_path(params[:id])
         else 
+            byebug
             hash = CrewMember.get_crew_info(params[:id])
             CrewMember.create(set_crew)
             redirect_to crew_member_path(params[:id])
