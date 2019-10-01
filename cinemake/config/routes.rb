@@ -36,7 +36,6 @@ Rails.application.routes.draw do
 
   post '/projects', to: 'projects#create'
 
-
   ###Movies###
   get '/movies', to: 'movies#index', as: 'movies'
   get '/directors/:id/movies', to: 'movies#director_index', as: 'director_movie'
