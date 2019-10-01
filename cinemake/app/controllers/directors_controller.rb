@@ -7,6 +7,7 @@ class DirectorsController < ApplicationController
     end
 
     def create
+        byebug
         @director = Director.new(director_params)
         if @director.valid?
             @director.save

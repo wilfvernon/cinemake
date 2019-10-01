@@ -11,7 +11,7 @@
 
 
 
-<%= form_with model: @director, local: true, url: directors_path, method: :post do |form| %>
+<%= form_with model: @director, url: directors_path, method: :post do |form| %>
     
     <%= form.label :name %>
     <%= form.text_field :name %>
