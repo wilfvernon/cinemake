@@ -19,7 +19,7 @@
 <% if params[:category] == "Actors" || params[:category] == "Writers" %>  
     <% results_array.each_with_index do |result, index| %>
        <li> 
-       <%= form_with url: crew_members_path, method: :post do |f| %>
+       <%= form_with url: crew_member_path(result["id"]), method: :get, local: :true do |f| %>
             <%= f.hidden_field :id, :value => result["id"] %>
             <%= f.submit result["name"]%> 
        <% end %>
