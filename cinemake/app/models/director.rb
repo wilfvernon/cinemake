@@ -1,6 +1,11 @@
 class Director < ApplicationRecord
 has_secure_password
-has_many :projects
+
+has_many :director_movies
+has_many :movies, through: :director_movies
+has_many :posts
+has_many :projects, through: :posts
+
 validates :name, presence: true
 validates :age, presence: true
 validate :age_is_over_13
