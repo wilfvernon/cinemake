@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_151811) do
+ActiveRecord::Schema.define(version: 2019_10_01_191318) do
 
   create_table "crew_members", force: :cascade do |t|
     t.string "birthday"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2019_09_30_151811) do
     t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "names"
-    t.string "type"
+    t.string "name"
+    t.string "crew_member_type"
   end
 
   create_table "directors", force: :cascade do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_151811) do
     t.integer "age"
     t.string "nationality"
     t.string "username"
-    t.integer "password_digest"
+    t.string "password_digest"
     t.string "image"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
