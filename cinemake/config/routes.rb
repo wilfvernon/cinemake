@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   #Actors Test
   get '/test', to: 'actors#test', as: 'test'
   #Crew Members Test
-  get '/crew_members', to: 'crew_members#index', as: 'crew_members'
-  
+  get '/crew_members/search', to: 'crew_members#index', as: 'crew_members'
+  get '/crew_member/:id', to: 'crew_members#show', as: 'crew_member'
+  post 'crew_member/create', to: 'crew_members#create', as: 'create_crew_member'
 
   ###Application Routes ###
   get '/', to: 'application#welcome', as: 'welcome'

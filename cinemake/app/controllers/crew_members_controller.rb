@@ -1,19 +1,26 @@
 require 'rest-client'
 require 'pry'
-class CrewMembersController <ApplicationController
+
+class CrewMembersController < ApplicationController
    
     def index 
-        # get_actor_by_name(params)
+        
     end
 
-    ### API HELPER METHODS ###
-
-    def get_actor_by_name(name)
-        artist_name = name.parameterize(separator: '+')
-        response = RestClient.get "https://api.themoviedb.org/3/search/person?api_key=c31c8ad23cb4028ce0c0e382ff7408a9&query=#{artist_name}" 
-        result_hash = JSON.parse(response) 
-        @results_array = result_hash["results"].select{|result| result["known_for_department"] == "Acting"}
+    def create
+        if CrewMember.id.indclude?(params[:id])
+            redirect_to crew_member_path(params[:id])
+        else 
+            hash = CrewMember.get_crew_info(params[:id])
+            CrewMember.create(set_crew)
+            redirect_to crew_member_path(params[:id])
+        end
     end
 
+    private
 
+    def set_crew
+        hash.require(:crew_member).permit(:id, :birthday, :gender, :place_of_birth, :bio, :names, :type)
+    end
+ 
 end
