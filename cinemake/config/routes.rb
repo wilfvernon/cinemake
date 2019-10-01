@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/movies', to: 'movies#index', as: 'movies'
   get '/directors/:id/movies', to: 'movies#director_index', as: 'director_movies'
   get '/movies/new', to: 'movies#new', as: 'new_movie'
+  get '/movie/:id', to: 'movies#show', as: 'movie'
 
   post '/movies', to: 'movies#create'
 
