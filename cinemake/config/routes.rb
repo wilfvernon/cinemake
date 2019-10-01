@@ -28,10 +28,18 @@ Rails.application.routes.draw do
   patch '/directors/:id', to: 'directors#update'
   delete '/directors/:id', to: 'directors#destroy'
 
+  ###Projects Routes###
+
   get '/directors/:id/projects', to: 'projects#index', as: 'projects'
+  get '/projects/new', to: 'projects#new', as: 'new_project'
+  get '/projects/:id', to: 'projects#show', as: 'project'
+
+  post '/projects', to: 'projects#create'
+
 
   ###Movies###
-
+  get '/movies', to: 'movies#index', as: 'movies'
+  get '/directors/:id/movies', to: 'movies#director_index', as: 'director_movie'
 
 
 end
