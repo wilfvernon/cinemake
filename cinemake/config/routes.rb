@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   get '/', to: 'application#welcome', as: 'welcome'
   
   ###Session Routes
-  get '/login', to: 'sessions#login', as: 'login'
+  get '/login', to: 'sessions#new', as: 'login'
+
   get '/signup', to: 'directors#new', as: 'signup'
+
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#logout', as: 'logout'
 
   #Actors Test
   get '/test', to: 'actors#test', as: 'test'
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
 
   ###Directors Routes###
 
-  get '/directors/edit', to: 'directors#dit', as: 'edit_director'
+  get '/directors/edit', to: 'directors#edit', as: 'edit_director'
   get '/directors/:id', to: 'directors#show', as: 'director'
 
   post '/directors', to: 'directors#create', as: 'directors'
