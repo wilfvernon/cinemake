@@ -14,17 +14,15 @@
         <%= director.name %> 
     <% end %> </div>
 
-<% if @movie.writers.any? %>
+<% unless @movie.writers.empty? %>
     <div>Writers:
     <% @movie.writers.each do |writer|%>
-        <%= "#{writer.name}, #{writer.movie_role(@movie).name}" %>
+        <%= "#{writer.name} (#{writer.movie_role(@movie).name})" %>
     <% end %> </div>
 <% end %>
-<% if @movie.stars.any? %>
+<% unless @movie.stars.empty? %>
     <div>Stars: 
-    <% @movie.stars.each do |actor|%>
-        <%= "#{actor.name} (#{actor.movie_role(@movie).name})" %>
-    <% end %> </div>
+        <%= @movie.star_array.join(",  ") %></div>
 <% end %>
 <% link_to "Full Cast and Crew", movie_crew_members_path(@movie) %>
     --------------------------------------------------------------------

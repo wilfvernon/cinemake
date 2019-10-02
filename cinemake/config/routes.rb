@@ -23,9 +23,9 @@ Rails.application.routes.draw do
 
 
   ### Roles Routes ###
-  get '/role/new', to: 'roles#new', as: 'new_role'
+  get 'crew_members/:id/roles/new', to: 'roles#new', as: 'new_role'
   
-  post 'role/new', to: 'roles#create'
+  post 'roles/new', to: 'roles#create', as: 'roles'
 
   ###Directors Routes###
 

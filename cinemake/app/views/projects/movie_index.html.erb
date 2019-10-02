@@ -14,7 +14,7 @@
 
 <% if @movie.projects.any? %>
     <% if @movie.director_ids.include?(session[:user]["id"]) %>
-        <%= button_to "Add a Project", new_project_path(@movie) %><br>
+        <%= button_to "Add a Project", new_project_path(@movie), method: :get %><br>
     <% end %>
     <% @movie.projects.each do |project| %>
         <div><h3><%= link_to "#{project.name}", project_path(project) %></h3>

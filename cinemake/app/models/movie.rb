@@ -38,7 +38,11 @@ class Movie < ApplicationRecord
     end
 
     def stars
-        self.actors.select{|actor| actor.movie_role(self).featured? == true}
+        self.actors.select{|actor| actor.movie_role(self).featured == true}
+    end
+
+    def star_array
+        self.stars.map{|star| "#{star.name} (#{star.movie_role(self).name})" }
     end
 
     def writers

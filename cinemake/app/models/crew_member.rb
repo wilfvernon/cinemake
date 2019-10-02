@@ -1,4 +1,7 @@
 class CrewMember < ApplicationRecord
+    has_many :roles
+    has_many :movies, through: :roles
+
     def self.get_actors_by_name(name)
         artist_name = name.parameterize(separator: '+')
         response = RestClient.get "https://api.themoviedb.org/3/search/person?api_key=c31c8ad23cb4028ce0c0e382ff7408a9&query=#{artist_name}" 
@@ -23,6 +26,6 @@ class CrewMember < ApplicationRecord
     end
 
     def movie_role(movie)
-        self.roles.select{|role| role.movie_id == movie.id}
+        self.roles.find{|role| role.movie_id == movie.id}
     end
 end
