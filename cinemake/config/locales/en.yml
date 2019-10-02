@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      project_crew_member:
+        director_id: "Director"
+        crew_member: "Crew Member"
+      project:
+        name: "Task"

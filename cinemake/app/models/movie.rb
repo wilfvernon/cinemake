@@ -28,12 +28,29 @@ class Movie < ApplicationRecord
     def actors
         self.crew_members.select{|crew_member| crew_member.crew_member_type == "Acting"}
     end
-
-    def writers
-        self.crew_members.select{|crew_member| crew_member.crew_member_type == "Writing"}
+    
+    def actor_names
+        self.actors.map{|actor| actor.name}
+    end
+    
+    def actor_ids
+        self.actors.map{|actor| actor.id}
     end
 
     def stars
         self.actors.select{|actor| actor.movie_role(self).featured? == true}
     end
+
+    def writers
+        self.crew_members.select{|crew_member| crew_member.crew_member_type == "Writing"}
+    end
+    
+    def writer_names
+        self.writers.map{|writer| writer.name}
+    end
+
+    def writer_ids
+        self.writers.map{|writer| writer.id}
+    end
+
 end

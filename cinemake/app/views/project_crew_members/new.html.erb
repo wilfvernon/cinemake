@@ -1,10 +1,48 @@
 <h1><%= @project.name %></h1>
 
 <h3>Who do you want to add?</h3>
-<% form.<%= form_with url: new_project_crew_members_path, local: true, method: 'get' do |form| %> 
-    <%= f.select :category, options_for_select(["Directors", "Actors", "Writers"]) %>
-    <%= f.submit "Search" %>
+<%= form_with url: new_project_crew_member_path, local: true, method: 'get' do |form| %> 
+    <%= form.select :category, options_for_select(["Directors", "Actors", "Writers"]) %>
+    <%= form.submit "Search" %>
+<% end %>
+
+<% if @project_crew_member.errors.any? %>
+    <ul><% @project_crew_member.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+    <% end %></ul>
 <% end %>
 
 <% if params[:category] %>
-<% 
+<br>
+    <% if params[:category] == "Directors" %>
+        <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
+            <%= f.hidden_field :project_id, :value => @project.id %>
+            <%= f.select :director_id, [@project.movie.director_names, @project.movie.director_ids] %>
+            <%= f.submit "Add" %>
+        <% end %>
+    <% end %>
+
+    <% if params[:category] == "Actors" %>
+        <% if @project.movie.actors.any? %>
+            <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
+                <%= f.hidden_field :project_id, :value => @project.id %>
+                <%= f.select :crew_member_id, [@project.movie.actor_names, @project.movie.actor_ids] %>
+                <%= f.submit "Add" %>
+            <% end %>
+        <% else %>
+            No actors associated with <%= @project.movie.name %>
+        <% end %>
+    <% end %>
+
+    <% if params[:category] == "Writers" %>
+        <% if @project.movie.writers.any? %>
+            <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
+                <%= f.hidden_field :project_id, :value => @project.id %>
+                <%= f.select :crew_member_id, [@project.movie.writer_names, @project.movie.writer_ids] %>
+                <%= f.submit "Add" %>
+            <% end %>
+        <% else %>
+            No writers associated with <%= @project.movie.name%>
+        <% end %>
+    <% end %>
+<% end %>
