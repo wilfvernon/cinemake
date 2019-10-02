@@ -16,6 +16,12 @@ class ProjectsController < ApplicationController
 
     def create
         @project = Project.new(project_params)
+        if @project.valid?
+            @project.save
+            redirect_to new_project_crew_member_path(@project)
+        else
+            render :new
+        end
     end
 
     def movie_index

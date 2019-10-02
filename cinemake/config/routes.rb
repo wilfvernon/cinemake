@@ -13,13 +13,18 @@ Rails.application.routes.draw do
 
   #Actors Test
   get '/test', to: 'actors#test', as: 'test'
-  #Crew Members Test
+  ###Crew Members###
+
   get '/crew_members/search', to: 'crew_members#index', as: 'crew_members_search'
   get '/crew_members/:id', to: 'crew_members#show', as: 'crew_member'
+  get '/movies/:id/crew_members', to: 'crew_members#movie_index', as: 'movie_crew_members'
+  
   post 'crew_members', to: 'crew_members#create', as: 'create_crew_members'
+
 
   ### Roles Routes ###
   get '/role/new', to: 'roles#new', as: 'new_role'
+  
   post 'role/new', to: 'roles#create'
 
   ###Directors Routes###
@@ -48,5 +53,9 @@ Rails.application.routes.draw do
 
   post '/movies', to: 'movies#create'
 
+  ###Project Crew Members###
+  get '/projects/:id/crew_members/new', to: 'project_crew_members#new', as: 'new_project_crew_member'
+
+  post '/projects/:id/crew_members', to: 'project_crew_members#create', as: 'project_crew_members'
 
 end
