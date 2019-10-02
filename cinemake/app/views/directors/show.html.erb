@@ -1,4 +1,5 @@
 <h1><%=@director.name%></h1><br>
 <h2><%=@director.username%></h2><br>
-<%= button_to "Log Out", logout_path, method: :get%><br>
+<%= button_to "Log Out", logout_path, method: :get%><br><br>
+<%= button_to "Movies", director_movies_path(@director), method: :get %><br>
 <%= image_tag("#{@director.image}")%>
