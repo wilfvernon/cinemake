@@ -1,10 +1,13 @@
 <h1>Casting Roles</h1>
-
+<%byebug%>
+<h3> Please select with Movie You'd like to Cast <%=@crew_member.name %></h3>
 <%=form_with model: @role, method: :post do |f| %>
-<%=f.hidden_field :person_id, value => 
-<%=f.
-<%=
-<%=
-<%=
-<%=
-<%=
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.hidden_field :id, value => @crew_member.id %>
+<%=f.submit "Hire " %> 
+<% end %>
