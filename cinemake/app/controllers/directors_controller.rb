@@ -7,9 +7,11 @@ class DirectorsController < ApplicationController
     end
 
     def create
+        byebug
         @director = Director.new(director_params)
         if @director.valid?
             @director.save
+            session[:user] = director
             redirect_to director_path(@director)
         else
             render :new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_191318) do
+ActiveRecord::Schema.define(version: 2019_10_01_225643) do
 
   create_table "crew_members", force: :cascade do |t|
     t.string "birthday"
@@ -40,12 +40,19 @@ ActiveRecord::Schema.define(version: 2019_10_01_191318) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "abbreviation"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.string "synopsis"
     t.integer "release_year"
     t.string "production_company"
-    t.string "language"
+    t.integer "language_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

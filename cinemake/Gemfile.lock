@@ -98,6 +98,7 @@ GEM
     i18n_data (0.8.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    language-select (1.1.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -241,6 +242,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   country_select
   jbuilder (~> 2.7)
+  language-select
   listen (>= 3.0.5, < 3.2)
   pry
   puma (~> 3.11)
