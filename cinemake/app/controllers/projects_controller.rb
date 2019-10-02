@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     end
 
     def show
-        @project.find(params[:id])
+        @project = Project.find(params[:id])
     end
 
     def new
@@ -15,11 +15,14 @@ class ProjectsController < ApplicationController
     end
 
     def create
+        
         @project = Project.new(project_params)
         if @project.valid?
+            @project.status = "Open"
             @project.save
             redirect_to new_project_crew_member_path(@project)
         else
+            @movie = Movie.find(params[:project][:movie_id])
             render :new
         end
     end
@@ -31,6 +34,6 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.require(:project).permit(:movie_id, :director_id, :start_date, :end_date, :budget)
+        params.require(:project).permit(:movie_id, :name, :start_date, :end_date, :budget)
     end
 end
