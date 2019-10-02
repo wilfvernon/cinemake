@@ -8,7 +8,7 @@ class CrewMembersController < ApplicationController
     end
 
     def show
-        if CrewMember.ids.include?(params[:id])
+        if CrewMember.ids.include?(params[:id].to_i)
             @crew_member = CrewMember.find(params[:id])
         else 
             hash = CrewMember.get_crew_info(params[:id])
@@ -17,11 +17,11 @@ class CrewMembersController < ApplicationController
     end
 
     def create
-        if CrewMember.ids.include?(params["crew_member"]["id"])
-            @crew_member = CrewMember.find(params["crew_member"]["id"])
+        if CrewMember.ids.include?(params["crew_member"]["id"].to_i)
+            flash[:crew_member] = CrewMember.find(params["crew_member"]["id"])
             redirect_to new_role_path
         else 
-            @crew_member = CrewMember.create(:id => params["crew_member"]["id"], :birthday => params["crew_member"]["birthday"], :gender_id => params["crew_member"]["gender_id"], :place_of_birth => params["crew_member"]["place_of_birth"], :bio => params["crew_member"]["bio"], :name => params["crew_member"]["name"], :crew_member_type => params["crew_member"]["crew_member_type"], :image => params["crew_member"]["profile_path"])
+            flash[:crew_member] = CrewMember.create(:id => params["crew_member"]["id"], :birthday => params["crew_member"]["birthday"], :gender_id => params["crew_member"]["gender_id"], :place_of_birth => params["crew_member"]["place_of_birth"], :bio => params["crew_member"]["bio"], :name => params["crew_member"]["name"], :crew_member_type => params["crew_member"]["crew_member_type"], :image => params["crew_member"]["profile_path"])
             redirect_to new_role_path
         end
     end

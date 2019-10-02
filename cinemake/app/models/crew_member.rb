@@ -19,7 +19,7 @@ class CrewMember < ApplicationRecord
     end
 
     def self.ids
-        CrewMember.all.select {|crew| crew.id}
+        CrewMember.all.map {|crew| crew.id}
     end
 
     def movie_role(movie)
