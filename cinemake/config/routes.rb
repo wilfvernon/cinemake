@@ -16,8 +16,11 @@ Rails.application.routes.draw do
   #Crew Members Test
   get '/crew_members/search', to: 'crew_members#index', as: 'crew_members_search'
   get '/crew_members/:id', to: 'crew_members#show', as: 'crew_member'
-  post 'crew_members', to: 'crew_members#create', as: 'crew_members'
+  post 'crew_members', to: 'crew_members#create', as: 'create_crew_members'
 
+  ### Roles Routes ###
+  get '/role/new', to: 'roles#new', as: 'new_role'
+  post 'role/new', to: 'roles#create'
 
   ###Directors Routes###
 
