@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   ###Projects Routes###
 
   get '/directors/:id/projects', to: 'projects#index', as: 'projects'
-  get '/projects/new', to: 'projects#new', as: 'new_project'
+  get '/movies/:id/projects/new', to: 'projects#new', as: 'new_project'
   get '/projects/:id', to: 'projects#show', as: 'project'
+  get '/movies/:id/projects', to: 'projects#movie_index', as: 'movie_projects'
 
   post '/projects', to: 'projects#create'
 
