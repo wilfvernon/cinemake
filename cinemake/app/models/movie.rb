@@ -24,4 +24,12 @@ class Movie < ApplicationRecord
     def director_ids
         self.directors.map{|director| director.id}
     end
+
+    def actors
+        self.crew_members.select{|crew_member| crew_member.crew_member_type == "Acting"}
+    end
+
+    def writers
+        self.crew_members.select{|crew_member| crew_member.crew_member_type == "Writing"}
+    end
 end
