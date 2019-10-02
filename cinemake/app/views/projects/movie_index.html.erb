@@ -2,7 +2,7 @@
 <h1><%= "#{@movie.name} Projects" %></h1>
 
 <div class="simple-calendar"></div><%= month_calendar attribute: :start_date, end_attribute: :end_date, events: @movie.projects do |date, projects| %>
-    <%= date %>
+    <%= date.day %>
     <% unless projects.empty? %>
         <% projects.each do |project| %>
           <div>
