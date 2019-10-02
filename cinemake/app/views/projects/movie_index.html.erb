@@ -1,15 +1,15 @@
-<h1><%= @movie.name %></h1>
-
-
-<h2>Projects</h2>
+<%= "#{@movie.name} Projects" %> 
 
 <% if @movie.projects.any? %>
-    <% @movie.most_recent_three_projects.each do |project| %>
+    <% if @movie.director_ids.include?(session[:user]["id"]) %>
+        <%= button_to "Add a Project", new_project_path(@movie) %><br>
+    <% end %>
+    <% @movie.projects.each do |project| %>
         <div><h3><%= link_to "#{project.name}", project_path(project) %></h3>
         <p>Status: <%= project.status %> Start: <%= project.start_date %> Finish: <%= project.end_date %></p>
         --------------------------------------------------------------------</div>
     <% end %>
-    <%= link_to "Show More", movie_projects_path(@movie)%>
+
 <% else %>
     <p>This movie has no projects.
         <% if @movie.director_ids.include?(session[:user]["id"]) %>
@@ -17,5 +17,3 @@
         <%= button_to "Add a New Project Now!", new_project_path(@movie) %>
         <% end %></p>
 <% end %>
-
-    
