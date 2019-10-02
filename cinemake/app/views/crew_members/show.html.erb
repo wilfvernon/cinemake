@@ -1,5 +1,10 @@
 <h1><%= @crew_member.name %></h1>
 
+<% if @crew_member.image %>
+    <img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" height = "400" width="350">
+<% end %>
+<br/>
+<br/>
 <% if @crew_member.crew_member_type %>
     Role: <%=@crew_member.crew_member_type %>
 <% end %>
@@ -28,6 +33,7 @@
     <%=f.hidden_field :bio, :value => @crew_member.bio %>
     <%=f.hidden_field :name, :value => @crew_member.name %>
     <%=f.hidden_field :crew_member_type, :value => @crew_member.crew_member_type %>
+    <%=f.hidden_field :image, :value => @crew_member.image %>
     <%=f.submit "Hire" %>
 <% end %>
 
