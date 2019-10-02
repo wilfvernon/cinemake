@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+*= require simple_calendar
+
+
 #welcome_page{
     background-color: black
 }
@@ -32,3 +35,4 @@
  textarea {
     resize: none;
     }
+
