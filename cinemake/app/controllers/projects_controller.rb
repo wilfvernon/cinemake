@@ -10,11 +10,16 @@ class ProjectsController < ApplicationController
     end
 
     def new
-        @movie = Movie.new
+        @project = Project.new
+        @movie = Movie.find(params[:id])
     end
 
     def create
         @project = Project.new(project_params)
+    end
+
+    def movie_index
+        @movie = Movie.find(params[:id])
     end
 
     private
