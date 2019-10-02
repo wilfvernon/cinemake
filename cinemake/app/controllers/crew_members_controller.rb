@@ -26,4 +26,8 @@ class CrewMembersController < ApplicationController
         end
     end
 
+    def movie_index
+        @movie = Movie.find(params[:id])
+    end
+
 end

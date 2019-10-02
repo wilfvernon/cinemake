@@ -21,4 +21,8 @@ class CrewMember < ApplicationRecord
     def self.ids
         CrewMember.all.select {|crew| crew.id}
     end
+
+    def movie_role(movie)
+        self.roles.select{|role| role.movie_id == movie.id}
+    end
 end

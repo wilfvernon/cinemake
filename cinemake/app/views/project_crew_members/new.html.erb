@@ -1,0 +1,10 @@
+<h1><%= @project.name %></h1>
+
+<h3>Who do you want to add?</h3>
+<% form.<%= form_with url: new_project_crew_members_path, local: true, method: 'get' do |form| %> 
+    <%= f.select :category, options_for_select(["Directors", "Actors", "Writers"]) %>
+    <%= f.submit "Search" %>
+<% end %>
+
+<% if params[:category] %>
+<% 
