@@ -16,7 +16,6 @@
         <% user = Director.find(session[:user]["id"]) %>
         
         <% if @director.id == user.id%>
-            <%= button_to "Log Out", logout_path, method: :get%><br><br>
             <% if user.has_pending_friend_requests? %>
             <p>You have pending friend requests<br>
                 <%= button_to "Click Here to View", pending_friends_path, method: :get %></p><br>
@@ -37,7 +36,7 @@
         <% end %>
 
         <%= button_to "Movies", director_movies_path(@director), method: :get %><br>
-        <%= image_tag("#{@director.image}")%>
+        <%= image_tag "#{@director.image}", size: "600x600"%>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

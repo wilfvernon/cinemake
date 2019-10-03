@@ -18,6 +18,10 @@ class Director < ApplicationRecord
             errors.add(:age, "cannot be less than 13")
         end
     end
+
+    def self.names
+        self.all.map{|director|director.name}
+    end
     
     def projects
         self.movies.map{|movie| movie.projects}.flatten
