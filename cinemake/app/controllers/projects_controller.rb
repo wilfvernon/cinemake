@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
     
     def index
         @director = Director.find(params[:id])
-        @projects = Project.all.select{|project| project.director_id == params[:id]}
+        @projects = Project.all.select{|project| project.movie.directors.include?(@director)}
     end
 
     def show
