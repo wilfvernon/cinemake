@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   ###Application Routes ###
   get '/', to: 'application#welcome', as: 'welcome'
+  get '/search', to: 'application#search', as: 'search'
   
   ###Session Routes
   get '/login', to: 'sessions#new', as: 'login'

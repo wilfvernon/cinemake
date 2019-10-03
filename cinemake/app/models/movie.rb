@@ -14,8 +14,20 @@ class Movie < ApplicationRecord
         self.projects.sort_by{|project| project.created_at}.last(3).reverse
     end
 
+    def self.names
+        self.all.map{|movie|movie.name}
+    end
+
+    def self.downcase_names
+        self.all.map{|movie|movie.name.downcase}
+    end
+
     def short_synopsis
-        self.synopsis[0..100] + "..."
+        if self.synopsis.length > 100
+            self.synopsis[0..100] + "..."
+        else
+            self.synopsis
+        end
     end
 
     def director_names
