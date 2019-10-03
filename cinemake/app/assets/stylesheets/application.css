@@ -21,6 +21,10 @@ h1  {color: white;
 
 p    {color: white;}
 
+.hr{
+    border-color: white
+}
+
 .card-text{
     color: black
 }
@@ -52,6 +56,32 @@ p    {color: white;}
     justify-items: space-around
  }
 
- textarea {
-    resize: none;
-    }
+ .card{
+    margin-left: 80px;
+    margin-right: 80px;
+    background-color: #f1f1f1;
+        width: 100px;
+        text-align: center;
+ }
+
+ .card-text{
+     color: black;
+ }
+
+ .flex-container{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: row;
+ }
+
+ .post-form{
+     margin-left: 120px;
+ }
+
+ .post{
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+
