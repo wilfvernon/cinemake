@@ -39,3 +39,5 @@
 # Language.create!(name: "JavaScript", abbreviation: "JV")
 # Language.create!(name: "Ruby", abbreviation: "RB")
 # Language.create!(name: "Java2K", abbreviation: "GG")
+Friend.destroy_all
+Friend.new(:friender_id => 1, :friendee_id => 3, :status => "pending").save

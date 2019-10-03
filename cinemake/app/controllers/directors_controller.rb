@@ -19,8 +19,13 @@ class DirectorsController < ApplicationController
 
     def show
         @director = Director.find(params[:id])
+        @friend = Friend.new
     end
 
+    def pending_friends
+        @director = Director.find(params[:id])
+    end
+    
     private
         
     def director_params

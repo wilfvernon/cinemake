@@ -1,0 +1,13 @@
+<h1>Pending Friend Requests</h1>
+<%if @director.inbound_pending_requests.empty? %>
+    <p>You have no pending requests</p>
+<% else %>
+    <ul><% @director.inbound_pending_requests.each do |friend| %>
+        <%= link_to "#{friend.friender.name}", director_path(friend.friender) %>
+        <%= form_with model: friend, url: friends_path, method: :patch, local: true do |f| %>
+            <%= f.hidden_field :id, :value => friend.id %>
+            <%= f.hidden_field :status, :value => 'accepted' %>
+            <%= f.submit "Accept"%>
+        <% end %>
+    <% end %>
+<% end %>
