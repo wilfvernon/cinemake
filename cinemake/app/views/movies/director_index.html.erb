@@ -1,16 +1,40 @@
-<h1><%=@director.name%>'s Movies</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>New Director</title>
 
-<% if @director.id == session[:user]["id"] %>
-    <%= button_to "Make a Movie", new_movie_path, method: :get %><br>
-<% end %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <% stylesheet_link_tag 'application', media: 'all', 'data-turbo-links-track-': 'reload' %>
+    <link rel = "stylesheets"
+        type = "text/css"
+        href = "../assets/stylesheets/application.css" />
 
-<% unless @director.movies.empty? %>
-    <% @director.movies.each do |movie| %>
-    <div>
-        <h3><%= link_to "#{movie.name} (#{movie.release_year})", movie_path(movie) %></h3>
-        <p><%=movie.short_synopsis%></p>
-    </div>
-    <% end %>
-<% else %>
-    This Director has no movies.
-<% end %>
+
+        <h1><%=@director.name%>'s Movies</h1>
+
+        <% if @director.id == session[:user]["id"] %>
+            <%= button_to "Make a Movie", new_movie_path, method: :get %><br>
+        <% end %>
+
+        <% unless @director.movies.empty? %>
+            <% @director.movies.each do |movie| %>
+            <div>
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%="#{movie.name} (#{movie.release_year}"%></h5>
+                <p class="card-text"><%=movie.short_synopsis%></p>
+                <a href=<%= movie_path(movie) %> class="btn btn-primary"><%="#{movie.name} (#{movie.release_year})"%></a>
+                </div>
+            </div>
+                <h3><%= link_to "#{movie.name} (#{movie.release_year})", movie_path(movie) %></h3>
+                <p><%=movie.short_synopsis%></p>
+            <% end %>
+        <% else %>
+            This Director has no movies.
+        <% end %>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
