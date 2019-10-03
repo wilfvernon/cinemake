@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+    has_many :posts
     belongs_to :language
     has_many :roles
     has_many :crew_members, through: :roles

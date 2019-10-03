@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_053600) do
+ActiveRecord::Schema.define(version: 2019_10_03_125648) do
 
   create_table "crew_members", force: :cascade do |t|
     t.string "birthday"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_053600) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.integer "project_id"
+    t.integer "movie_id"
     t.integer "director_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
