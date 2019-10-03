@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get '/movies/:id/projects', to: 'projects#movie_index', as: 'movie_projects'
 
   post '/projects', to: 'projects#create', as: 'projects'
+  patch '/projects', to: 'projects#update'
 
   ###Movies###
   get '/movies', to: 'movies#index', as: 'movies'

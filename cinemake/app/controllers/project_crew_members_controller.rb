@@ -17,6 +17,6 @@ class ProjectCrewMembersController < ApplicationController
 
     private
     def project_crew_member_params
-        params.require(:project_crew_member).permit(:director_id, :crew_member_id, :project_id)
+        params.require(:project_crew_member).permit(:director_id, :crew_member_id, :project_id, :job)
     end
 end

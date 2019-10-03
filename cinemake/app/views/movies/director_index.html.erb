@@ -6,7 +6,7 @@
 <% end %>
 
 <% unless @director.movies.empty? %>
-    <%= @director.movies.each do |movie| %>
+    <% @director.movies.each do |movie| %>
     <div>
         <h3></h2><%= link_to "#{movie.name} (#{movie.release_year})", movie_path(movie) %></h3>
         <p><%=movie.short_synopsis%></p>
