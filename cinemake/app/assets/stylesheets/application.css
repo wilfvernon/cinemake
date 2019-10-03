@@ -14,7 +14,9 @@
  *= require_self
  */
 
-
+img{ 
+    object-fit: cover
+}
 
 h1  {color: white;
     text-align: center;}
@@ -107,4 +109,17 @@ a:link, a:visited{
     text-align: center;
     margin: auto 0;
     width: 100vw;
+}
+
+.profile_image{
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.profile_options{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
 }

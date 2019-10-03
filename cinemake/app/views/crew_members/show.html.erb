@@ -1,7 +1,9 @@
 <h1><%= @crew_member.name %></h1>
 
 <% if @crew_member.image %>
-    <div id="welcome_logo"><img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" height = "500" width="400"></div>
+    <div class="flex-container">
+        <img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" class="profile_image">
+    </div>
 <% end %>
 <br/>
 <br/>
