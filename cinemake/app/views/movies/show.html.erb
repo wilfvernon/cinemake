@@ -1,14 +1,7 @@
 <h1><%= "#{@movie.name} (#{@movie.release_year})" %></h1>
 
-<h2>
-Director(s):
-    <% @movie.directors.each do |director|%>
-        <%= director.name %> 
-    <% end %> 
-</h2>
-<br>
 
-<h3>Cast and Crew</h3>
+<h2>Cast and Crew</h2>
 
 <div class=flex-container>
 <% if @movie.director_ids.include?(session[:user]["id"]) %>
@@ -18,38 +11,51 @@ Director(s):
 <% end %>
 </div>
 <br>
+<div class="flex-container">
+    Directors:
+    <% @movie.directors.each do |director|%>
+        <%= director.name %> 
+    <% end %> 
+</div>
 
+<br>
 
 <% unless @movie.writers.empty? %>
-    <div>Writers:
-    <% @movie.writers.each do |writer|%>
-        <%= "#{writer.name} (#{writer.movie_role(@movie).name})" %>
-    <% end %> </div>
+    <div class ="flex-container">
+        Writers:
+        <% @movie.writers.each do |writer|%>
+            <%= "#{writer.name} (#{writer.movie_role(@movie).name})" %>
+        <% end %> 
+    </div>
 <% end %>
+
+<br>
+
 <% unless @movie.stars.empty? %>
+    <div class ="flex-container">
+   
+        Stars: 
+            <%= @movie.star_array.join(",  ") %>
+    <% end %>
+    <% link_to "Full Cast and Crew", movie_crew_members_path(@movie) %>
+        <br>
     
-    <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <h5 class="card-title">Starring:</h5>
-    <p class="card-text"><%= @movie.star_array.join(",  ") %></p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
-    </div>
-<% end %>
-<% link_to "Full Cast and Crew", movie_crew_members_path(@movie) %>
-    --------------------------------------------------------------------
-
-
-
-
+    <br>
+<div class="flex-container">
+<div>
 <h2>Projects</h2>
 
 <% if @movie.projects.any? %>
     <% @movie.most_recent_three_projects.each do |project| %>
-        <div><h3><%= link_to "#{project.name}", project_path(project) %></h3>
-        <p>Status: <%= project.status %> Start: <%= project.start_date %> Finish: <%= project.end_date %></p>
-        --------------------------------------------------------------------</div>
-    <% end %>
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h4 class="card-title"><%=project.name %></h4>
+        <p class="card-text">Status: <%= project.status %> Start: <%= project.start_date %> Finish: <%= project.end_date %></p>
+        <a href=<%=project_path(project) %> class="card-link"><%=project.name%></a>
+    </div>
+    </div>
+      <% end %>
     <%= link_to "Show More", movie_projects_path(@movie)%>
 <% else %>
     <p>This movie has no projects.
@@ -58,5 +64,6 @@ Director(s):
         <%= button_to "Add a New Project Now!", new_project_path(@movie), method: :get %>
         <% end %></p>
 <% end %>
+</div>
 </div>
     

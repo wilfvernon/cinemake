@@ -8,15 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <body>
-        <>Search For Talent</h1>
-
+        <h1>Search For Talent</h1>
+        <div class="flex-container"
         <%= form_with url: crew_members_search_path, local: true, method: 'get' do |f| %> 
-            <%= f.label "Search" %>
             <%= f.text_field :search%>
             <%= f.select :category, options_for_select(["Actors", "Writers"]) %>
             <%= f.submit "Search" %>
         <% end %>
-
+        
         <% if params[:search] %>
             <% if params[:category] == "Actors" %>
                 <% results_array = Api.get_actors_by_name(params[:search]) %>
@@ -24,7 +23,7 @@
                 <% results_array = Api.get_writers_by_name(params[:search]) %>
             <%end%>
         <% end %>
-
+        </div>
         <ul>
         <% if params[:category] == "Actors" || params[:category] == "Writers" %>  
             <% results_array.each_with_index do |result, index| %>
