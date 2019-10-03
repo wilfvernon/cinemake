@@ -17,7 +17,7 @@
         <% end %>
 
         <% unless @director.movies.empty? %>
-            <% @director.movies.each do |movie| %>
+            <div class="person_cards"><% @director.movies.each do |movie| %>
         
             <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -25,7 +25,7 @@
                 <p class="card-text"><%=movie.short_synopsis%></p>
                 <a href=<%= movie_path(movie) %> class="btn btn-primary"><%="#{movie.name} (#{movie.release_year})"%></a>
             </div> 
-            <% end %>
+            <% end %></div>
             
         <% else %>
             This Director has no movies.
