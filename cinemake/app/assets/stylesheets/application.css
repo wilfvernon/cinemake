@@ -56,6 +56,19 @@ p    {color: white;}
  .card-text{
      color: black;
  }
+
+ .flex-container{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: row;
+ }
+ .flex-item {
+     display: flex;
+     flex-grow: 1;
+     justify-content: center;
+     flex-direction: row;
+ }
  textarea {
     resize: none;
     }
