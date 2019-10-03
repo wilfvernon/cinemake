@@ -3,16 +3,21 @@
 
 <h2>Cast and Crew</h2>
 
+<div class=flex-container>
 <% if @movie.director_ids.include?(session[:user]["id"]) %>
     <br>
     <%= button_to "Search for new Cast and Crew Members", crew_members_search_path, method: :get %>
     <br>
 <% end %>
+</div>
+<br>
 
-<div>Directors:
+<div class=flex-item>
+    Directors:
     <% @movie.directors.each do |director|%>
         <%= director.name %> 
-    <% end %> </div>
+    <% end %> 
+</div>
 
 <% unless @movie.writers.empty? %>
     <div>Writers:
@@ -42,5 +47,5 @@
         <%= button_to "Add a New Project Now!", new_project_path(@movie), method: :get %>
         <% end %></p>
 <% end %>
-
+</div>
     
