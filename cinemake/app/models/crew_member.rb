@@ -28,4 +28,28 @@ class CrewMember < ApplicationRecord
     def movie_role(movie)
         self.roles.find{|role| role.movie_id == movie.id}
     end
+
+    def self.actors
+        self.all.select{|cm| cm.crew_member_type == "Acting"}
+    end
+
+    def self.actor_names
+        self.actors.map{|actor|actor.name}
+    end
+
+    def self.writers
+        self.all.select{|cm| cm.crew_member_type == "Writing"}
+    end
+
+    def self.writer_names
+        self.writers.map{|writer|writer.name}
+    end
+
+    def short_bio
+        if self.bio.length > 100
+            self.bio[0..100] + "..."
+        else
+            self.bio
+        end
+    end
 end

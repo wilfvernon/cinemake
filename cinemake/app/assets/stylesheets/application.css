@@ -21,6 +21,10 @@ h1  {color: white;
 
 p    {color: white;}
 
+.card-text{
+    color: black
+}
+
 #welcome_page{
     background-color: black
 }

@@ -21,8 +21,9 @@ class CrewMembersController < ApplicationController
             @crew_member = CrewMember.find(params["crew_member"]["id"])
             redirect_to new_role_path(@crew_member)
         else 
-            @crew_member = CrewMember.create(:id => params["crew_member"]["id"], :birthday => params["crew_member"]["birthday"], :gender_id => params["crew_member"]["gender_id"], :place_of_birth => params["crew_member"]["place_of_birth"], :bio => params["crew_member"]["bio"], :name => params["crew_member"]["name"], :crew_member_type => params["crew_member"]["crew_member_type"], :image => params["crew_member"]["profile_path"])
+            @crew_member = CrewMember.create(:id => params["crew_member"]["id"], :birthday => params["crew_member"]["birthday"], :gender_id => params["crew_member"]["gender_id"], :place_of_birth => params["crew_member"]["place_of_birth"], :bio => params["crew_member"]["bio"], :name => params["crew_member"]["name"], :crew_member_type => params["crew_member"]["crew_member_type"], :image => params["crew_member"]["image"])
             redirect_to new_role_path(@crew_member)
+           
         end
     end
 
