@@ -25,6 +25,17 @@ p    {color: white;}
     border-color: white
 }
 
+.hr2{
+    border-color: white;
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.hr3{
+    border-color: white;
+    margin-right: 850px;
+}
+
 .card-text{
     color: black
 }
