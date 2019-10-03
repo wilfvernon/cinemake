@@ -60,6 +60,9 @@ p    {color: white;}
      color: black;
  }
 
+ .card-title{
+     color: black;
+ }
  .flex-container{
     display: flex;
     flex-grow: 1;
