@@ -16,7 +16,6 @@
 
 
 
-
 h1  {color: white;
     text-align: center;}
 
@@ -47,9 +46,16 @@ p    {color: white;}
 
  .card{
     margin-left: 80px;
-    margin-right: 80px
+    margin-right: 80px;
+    background-color: #f1f1f1;
+        width: 100px;
+        margin: 10px;
+        text-align: center;
  }
 
+ .card-text{
+     color: black;
+ }
  textarea {
     resize: none;
     }
