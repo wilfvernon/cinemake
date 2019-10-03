@@ -15,10 +15,12 @@ Directors:
 <% end %> 
     
 <% unless @movie.writers.empty? %>
-    <div>Writers:
-    <% @movie.writers.each do |writer|%>
-        <%= "#{writer.name} (#{writer.movie_role(@movie).name})" %>
-    <% end %> </div>
+    <div class ="flex-container">
+        Writers:
+        <% @movie.writers.each do |writer|%>
+            <%= "#{writer.name} (#{writer.movie_role(@movie).name})" %>
+        <% end %> 
+    </div>
 <% end %>
     
 <% unless @movie.stars.empty? %>
@@ -51,6 +53,8 @@ Directors:
         Projects are a great way to keep track of the stuff you need to get done for your movie, from buying props to filming scenes.<br>
         <%= button_to "Add a New Project Now!", new_project_path(@movie), method: :get %>
         <% end %></p>
+<% end %>
 <% end %></div>
+</div>
 </div>
     

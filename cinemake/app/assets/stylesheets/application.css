@@ -40,6 +40,10 @@ p    {color: white;}
     color: black
 }
 
+.card-title{
+    color: black;
+}
+
 #welcome_page{
     background-color: black
 }
@@ -92,6 +96,3 @@ p    {color: white;}
 }
 
 
- textarea {
-    resize: none;
-    }
