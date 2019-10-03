@@ -1,15 +1,26 @@
 
+<!DOCTYPE html>
 
-<h1>Login</h1>
+<html lang="en" class="gr__getbootstrap_com">
+    
+   
+<head>
+<title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
 
-<% if flash[:message] %>
-    <%= flash[:message] %>
-<% end %>
-<br><br>
-<%= form_with url: login_path, local: true, method: :post do |form| %>
-    <%= form.label :username %>
-    <%= form.text_field :username %><br>
-    <%= form.label :password %>
-    <%= form.password_field :password %><br>
-    <%= form.submit "Log In" %>
-<% end %>
+    <% if flash[:message] %>
+        <%= flash[:message] %>
+    <% end %>
+    <br><br>
+    <%= form_with url: login_path, local: true, method: :post do |form| %>
+        <%= form.label :username %>
+        <%= form.text_field :username %><br>
+        <%= form.label :password %>
+        <%= form.password_field :password %><br>
+        <%= form.submit "Log In" %>
+    <% end %>
+</body>
+
+</html>
