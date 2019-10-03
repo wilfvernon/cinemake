@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   before_action :valid?, except: [:new, :create, :destroy]
   
   def new
+    if session[:user]
+      redirect_to director_path(user)
+    end
   end
 
   def create

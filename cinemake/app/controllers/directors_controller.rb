@@ -3,7 +3,11 @@ class DirectorsController < ApplicationController
     before_action :valid?, except: [:new, :create]
 
     def new
-        @director = Director.new
+        if session[:user]
+            redirect_to director_path(user)
+        else
+            @director = Director.new
+        end
     end
 
     def create
