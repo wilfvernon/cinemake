@@ -41,6 +41,16 @@
                   <a class="dropdown-item" href="/movies/new">Make New Movie</a>
                 </div>
               </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Posts
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href=<%="/directors/#{session[:user]["id"]}/posts"%>>My Posts</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/posts/new">Write New Post</a>
+                  </div>
+                </li>
               <li class="nav-item">
                   <a class="nav-link" href=<%="/directors/#{session[:user]["id"]}/projects"%>>My Projects</a>
                 </li>

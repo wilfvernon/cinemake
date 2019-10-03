@@ -12,7 +12,6 @@
             <% end %>
         <% end %>
     <% end %>
-<<<<<<< HEAD
 <% end %></div>
 <br><hr class="hr2">
 <div class="post">
@@ -26,34 +25,11 @@
         <p>Status: <%= project.status %> Start: <%= project.start_date %> Finish: <%= project.end_date %></p>
         <hr class="hr3"></div>
     <% end %>
-=======
-</div>
-<br>
->>>>>>> bfc84840fe602a242c7af4c6ada1387ae4c9942c
 
 <div class="flex-container">
     <% if @movie.projects.any? %>
         <% if @movie.director_ids.include?(session[:user]["id"]) %>
-<<<<<<< HEAD
         Projects are a great way to keep track of the stuff you need to get done for your movie, from buying props to filming scenes.<br>
         <%= button_to "Add a New Project Now!", new_project_path(@movie) %>
         <% end %></p>
 <% end %></div>
-=======
-            <%= button_to "Add a New Project Now!", new_project_path(@movie), method: :get %><br>
-        <% end %>
-        <% @movie.projects.each do |project| %>
-            <%= link_to "#{project.name}", project_path(project) %>
-            <p>Status: <%= project.status %> Start: <%= project.start_date %> Finish: <%= project.end_date %></p>
-            --------------------------------------------------------------------
-        <% end %>
-<br>
-    <% else %>
-        <p>This movie has no projects.
-            <% if @movie.director_ids.include?(session[:user]["id"]) %>
-            Projects are a great way to keep track of the stuff you need to get done for your movie, from buying props to filming scenes.<br>
-            <%= button_to "Add a New Project Now!", new_project_path(@movie) %>
-            <% end %></p>
-    <% end %>
-</div>
->>>>>>> bfc84840fe602a242c7af4c6ada1387ae4c9942c

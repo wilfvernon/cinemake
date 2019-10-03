@@ -5,7 +5,7 @@
     <% unless projects.empty? %>
         <% projects.each do |project| %>
           <div>
-            <%= link_to "#{project.name} (#{project.movie.name})", project_path(project) %>
+            <%= link_to "#{project.name} (#{project.movie.name})", project_path(project), {:style=>'color:#DDDDDD;', :class => "css_class"} %>
           </div>
         <% end %>
     <% end %>

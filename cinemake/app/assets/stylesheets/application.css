@@ -21,6 +21,14 @@ h1  {color: white;
 
 p    {color: white;}
 
+a:link, a:visited{
+    color: rgb(13, 128, 13);
+    }
+    
+    a:hover, a:active {
+      color: rgb(107, 29, 170);
+    }
+
 .hr{
     border-color: white
 }

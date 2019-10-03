@@ -17,6 +17,7 @@ class CrewMembersController < ApplicationController
     end
 
     def create
+        byebug
         if CrewMember.ids.include?(params["crew_member"]["id"].to_i)
             @crew_member = CrewMember.find(params["crew_member"]["id"])
             redirect_to new_role_path(@crew_member)

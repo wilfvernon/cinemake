@@ -1,30 +1,23 @@
 <h1><%= @crew_member.name %></h1>
 
 <% if @crew_member.image %>
-    <img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" height = "500" width="400">
+    <div id="welcome_logo"><img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" height = "500" width="400"></div>
 <% end %>
 <br/>
 <br/>
-<% if @crew_member.crew_member_type %>
-    Role: <%=@crew_member.crew_member_type %>
+<div class = "post"><% if @crew_member.crew_member_type %>
+    Role: <%="#{@crew_member.crew_member_type} | " %>
 <% end %>
-<br/>
 <% if @crew_member.birthday %>
-    Birthday: <%=@crew_member.birthday %>
+    Birthday: <%="#{@crew_member.birthday} | " %>
 <% end %>
-<br/>
 <% if @crew_member.gender_id %>
     <% if @crew_member.gender_id == 2 %>
-        Gender: Male
+        <%= "Gender: Male | "%>
     <% elsif @crew_member.gender_id == 1 %>
-        Gender: Female
+        <%= "Gender: Female | "%>
     <% end %>    
-<% end %>
-<br/>
-<% if @crew_member.bio %>
-    Biography: <%=@crew_member.bio %>
-<% end %>
-
+<% end %><br><br>
 <%=form_with model: @crew_member, url: create_crew_members_path, method: :post do |f| %>
     <%=f.hidden_field :id, :value => @crew_member.id %>
     <%=f.hidden_field :birthday, :value => @crew_member.birthday %>
@@ -36,4 +29,10 @@
     <%=f.hidden_field :image, :value => @crew_member.image %>
     <%=f.submit "Hire" %>
 <% end %>
+<br/>
+<hr class="hr">
+<% if @crew_member.bio %>
+    <%=@crew_member.bio %>
+<% end %>
+</div><br>
 
