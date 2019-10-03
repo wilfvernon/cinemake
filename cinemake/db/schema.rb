@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_222027) do
+ActiveRecord::Schema.define(version: 2019_10_03_125648) do
 
   create_table "crew_members", force: :cascade do |t|
     t.string "birthday"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2019_10_02_222027) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.integer "friender_id"
+    t.integer "friendee_id"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -56,12 +64,13 @@ ActiveRecord::Schema.define(version: 2019_10_02_222027) do
     t.integer "language_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "budget"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.integer "project_id"
+    t.integer "movie_id"
     t.integer "director_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_222027) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "director_id"
+    t.string "job"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -85,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_222027) do
     t.string "status"
     t.string "name"
     t.string "description"
+    t.integer "amount_spent"
   end
 
   create_table "roles", force: :cascade do |t|

@@ -26,12 +26,14 @@ Rails.application.routes.draw do
   get 'crew_members/:id/roles/new', to: 'roles#new', as: 'new_role'
   
   post 'roles/new', to: 'roles#create', as: 'roles'
-
+  
   ###Directors Routes###
-
+  
   get '/directors/edit', to: 'directors#edit', as: 'edit_director'
   get '/directors/:id', to: 'directors#show', as: 'director'
-
+  get '/director/:id/friends', to: 'directors#friends', as: 'director_friends'
+  get '/director/:id/friends/pending', to: 'directors#pending_friends', as: 'pending_friends'
+  
   post '/directors', to: 'directors#create', as: 'directors'
   patch '/directors/:id', to: 'directors#update'
   delete '/directors/:id', to: 'directors#destroy'
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   get '/movies/:id/projects', to: 'projects#movie_index', as: 'movie_projects'
 
   post '/projects', to: 'projects#create', as: 'projects'
+  patch '/projects', to: 'projects#update'
 
   ###Movies###
   get '/movies', to: 'movies#index', as: 'movies'
@@ -57,5 +60,19 @@ Rails.application.routes.draw do
   get '/projects/:id/crew_members/new', to: 'project_crew_members#new', as: 'new_project_crew_member'
 
   post '/projects/:id/crew_members', to: 'project_crew_members#create', as: 'project_crew_members'
+
+  ###Friends###
+  
+  post '/friends', to: 'friends#create', as: 'friends'
+  patch '/friends', to: 'friends#update'
+
+  ###Posts###
+
+  get '/directors/:id/posts', to: 'posts#director_index', as: 'director_posts'
+  get '/directors/:id/posts/new', to: 'posts#new', as: 'new_post'
+  get '/posts/:id', to: 'posts#show', as: 'post'
+
+  post '/posts', to: 'posts#create', as: 'posts'
+
 
 end

@@ -27,6 +27,17 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def update
+        @project = Project.find(params[:project][:id])
+        @project.update(project_params)
+        if @project.valid?
+            @project.save
+            redirect_to project_path(@project)
+        else
+            redirect_to project_path(@project)
+        end
+    end
+
     def movie_index
         @movie = Movie.find(params[:id])
     end
@@ -34,6 +45,6 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.require(:project).permit(:movie_id, :name, :start_date, :end_date, :budget, :description)
+        params.require(:project).permit(:movie_id, :name, :start_date, :end_date, :budget, :description, :amount_spent)
     end
 end

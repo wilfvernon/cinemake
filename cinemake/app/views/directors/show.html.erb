@@ -10,11 +10,32 @@
     </head>
     <body>
 
-        <h1><%=@director.name%></h1><br>
         <h2><%=@director.username%></h2><br>
-        <%= button_to "Log Out", logout_path, method: :get%><br><br>
+        <% user = Director.find(session[:user]["id"]) %>
+
+        <% if @director.id == user.id%>
+            <%= button_to "Log Out", logout_path, method: :get%><br><br>
+            <% if user.has_pending_friend_requests? %>
+            <p>You have pending friend requests<br>
+                <%= button_to "Click Here to View", pending_friends_path, method: :get %></p><br>
+            <% end %>
+        <% else %>
+            <% if user.director_friends.include?(@director)%>
+                <%= button_to "Send Email", logout_path, method: :get%><br><br>
+            <% elsif user.has_left_friend_request?(@director) %>
+                <p>Friend Request Pending</p>
+            <% else %>
+                <%= form_with model: @friend, url: friends_path, local: true do |f| %>
+                    <%= f.hidden_field :friender_id, :value => user.id %>
+                    <%= f.hidden_field :friendee_id, :value => @director.id %>
+                    <%= f.hidden_field :status, :value => "pending" %>
+                    <%= f.submit "Send Friend Request"%><br><br>
+                <% end %>
+            <% end %>
+        <% end %>
+
         <%= button_to "Movies", director_movies_path(@director), method: :get %><br>
         <%= image_tag("#{@director.image}")%>
 
-    </body>
+  </body>
 </html>

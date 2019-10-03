@@ -9,6 +9,7 @@
 
 <%= form_with model: @project, url: projects_path, local: :true, method: :post do |form| %>
     <%= form.hidden_field :movie_id, :value => @movie.id %>
+    <%= form.hidden_field :amount_spent, :value => 0 %>
     <%= form.label :name, 'Task: ' %>
     <%= form.text_field :name %><br><br>
     <div><%= form.label :description, 'Description: ' %><br>
@@ -18,6 +19,6 @@
     <%= form.label :end_date, 'Finish by: ' %>
     <%= form.date_field :end_date %><br><br>
     <%= form.label :budget, 'Budget (USD):' %>
-    <%= form.number_field :budget, step: 10, :value => 0 %><br><br>
+    <%= form.number_field :budget, step: 1, :value => 0 %><br><br>
     <%= form.submit "Add Crew" %>
 <% end %>

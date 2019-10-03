@@ -3,7 +3,11 @@ class DirectorsController < ApplicationController
     before_action :valid?, except: [:new, :create]
 
     def new
-        @director = Director.new
+        if session[:user]
+            redirect_to director_path(user)
+        else
+            @director = Director.new
+        end
     end
 
     def create
@@ -19,8 +23,13 @@ class DirectorsController < ApplicationController
 
     def show
         @director = Director.find(params[:id])
+        @friend = Friend.new
     end
 
+    def pending_friends
+        @director = Director.find(params[:id])
+    end
+    
     private
         
     def director_params

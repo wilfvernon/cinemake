@@ -27,4 +27,35 @@ class Director < ApplicationRecord
         self.projects.sort_by{|project| project.created_at}.last(3).reverse
     end
 
+    def friend_requests
+        Friend.all.select{|friend| friend.friender == self || friend.friendee == self}.uniq
+    end
+
+    def friends
+        self.friend_requests.select{|friend| friend.status == "accepted"}
+    end
+
+    def pending_friends
+        self.friend_requests.select{|friend| friend.status == "pending"}
+    end
+
+    def inbound_pending_requests
+        self.pending_friends.select{|friend| friend.friendee == self}
+    end
+
+    def director_friends
+        self.friends.map{|friend| [friend.friender, friend.friendee]}.flatten.reject{|friend| friend == self}
+    end
+
+    def friend_names
+        self.director_friends.map{|director|director.name}
+    end
+
+    def has_pending_friend_requests?
+        self.pending_friends.find{|friend| friend.friendee == self}
+    end
+
+    def has_left_friend_request?(director)
+        self.pending_friends.find{|friend| friend.friender == self && friend.friendee == director}
+    end
 end

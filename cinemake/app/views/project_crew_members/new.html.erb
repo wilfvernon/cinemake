@@ -13,11 +13,13 @@
 <% end %>
 
 <% if params[:category] %>
-<br>
+<br>------------------------------------<br><br>
     <% if params[:category] == "Directors" %>
         <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
             <%= f.hidden_field :project_id, :value => @project.id %>
-            <%= f.select :director_id, [@project.movie.director_names, @project.movie.director_ids] %>
+            <%= f.collection_select :director_id, @project.movie.directors, :id, :name %><br><br>
+            <%= f.label :job, 'Job in Project: ' %><br>
+            <%= f.text_area :job %><br><br>
             <%= f.submit "Add" %>
         <% end %>
     <% end %>
@@ -26,7 +28,9 @@
         <% if @project.movie.actors.any? %>
             <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
                 <%= f.hidden_field :project_id, :value => @project.id %>
-                <%= f.select :crew_member_id, [@project.movie.actor_names, @project.movie.actor_ids] %>
+                <%= f.collection_select :crew_member_id, @project.movie.actors, :id, :name %><br><br>
+                <%= f.label :job, 'Job in Project: ' %><br>
+                <%= f.text_area :job %><br><br>
                 <%= f.submit "Add" %>
             <% end %>
         <% else %>
@@ -38,7 +42,9 @@
         <% if @project.movie.writers.any? %>
             <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
                 <%= f.hidden_field :project_id, :value => @project.id %>
-                <%= f.select :crew_member_id, [@project.movie.writer_names, @project.movie.writer_ids] %>
+                <%= f.collection_select :crew_member_id, @project.movie.writers, :id, :name %><br><br>
+                <%= f.label :job, 'Job in Project: ' %><br>
+                <%= f.text_area :job %><br><br>
                 <%= f.submit "Add" %>
             <% end %>
         <% else %>
