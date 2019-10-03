@@ -66,12 +66,7 @@ p    {color: white;}
     justify-content: center;
     flex-direction: row;
  }
- .flex-item {
-     display: flex;
-     flex-grow: 1;
-     justify-content: center;
-     flex-direction: row;
- }
+
  textarea {
     resize: none;
     }
