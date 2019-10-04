@@ -56,7 +56,7 @@
                 </li>
           </ul>
           <form class="form-inline my-2 my-lg-0" action='/search', method='get'>
-            <% if params["search"] %>
+            <% if params["search"] && params["search"] != "" %>
               <input class="form-control mr-sm-2" type="search" name="search" placeholder=<%=params[:search]%> aria-label="Search">
             <% else %>
               <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">

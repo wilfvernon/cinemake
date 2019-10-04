@@ -22,8 +22,8 @@
         <% movie.projects.each do |project| %>
             <div><h4><%= link_to "#{project.name}", project_path(project) %></h4>
             <p>Status: <%= project.status %> Start: <%= project.start_date.asctime[0..9] %> Finish: <%= project.end_date.asctime[0..9] %></p>
-            <hr class="hr3"></div>
-        <% end %>
+            </div>
+        <% end %><hr class="hr3">
 
     <% else %>
         <p>This movie has no projects.
@@ -31,5 +31,6 @@
             Projects are a great way to keep track of the stuff you need to get done for your movie, from buying props to filming scenes.<br>
             <%= button_to "Add a New Project Now!", new_project_path(movie) %>
             <% end %></p>
+            <hr class="hr3">
     <% end %>
 <% end %></div>
