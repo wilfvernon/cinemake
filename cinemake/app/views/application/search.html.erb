@@ -1,15 +1,18 @@
-<br>
+<br><br>
+<div class="post">
 <%= form_with url: search_path, local: true, method: 'get' do |f| %> 
     <%= f.label "Search: " %>
     <%= f.text_field :search, value: @search%>
     <%= f.select :category, options_for_select(["Movies", "Directors", "Actors", "Writers"]), :selected => @category %>
     <%= f.submit "Filter" %>
 <% end %>
-
-<h2>Search Results:</h2>
+<hr class="hr3">
+<% if @search == "" %>
+<% else %>
+<h3>Search Results:</h3>
 <%if @category %>
-    <h2>"<%=@search%>" in <%=@category%></h2><br><br>
-
+    <h3>"<%=@search%>" in <%=@category%></h3><br><br>
+    <hr class="hr">
     <%if @category == "Movies"%>
         <%if Movie.downcase_names.any?{|name| name.include?(@search.downcase)}%>
             <% Movie.all.select{|movie|movie.name.downcase.include?(@search.downcase)}.each do |movie| %>
@@ -84,17 +87,20 @@
 
 
 <%else%>
-    <h2>"<%=@search%>"</h2>
-    <%if Movie.downcase_names.any?{|name| name.include?(@search.downcase)}%>
+    <h3>"<%=@search%>"</h3>
+    <hr class="hr">
+    <%if Movie.downcase_names.any?{|name| name.include?(@search.downcase)} && @search != ""%>
+            <%byebug%>
         <h4>Movies:</h4><br>
         <% Movie.all.select{|movie|movie.name.downcase.include?(@search.downcase)}.each do |movie| %>
             <div><h3><%= link_to "#{movie.name} (#{movie.release_year})", movie_path(movie) %></h3>
             <p><%= "Directed by: #{movie.director_names.join(", ")}"%></p>
             <p><%= movie.short_synopsis %></p></div><br>
         <% end %>
+        <hr class="hr">
     <%end%>
-
-    <% if Director.names.any?{|name| name.downcase.include?(@search.downcase)} %>
+    
+    <% if Director.names.any?{|name| name.downcase.include?(@search.downcase)} && @search != ""%>
         <h4>Directors:</h4><br>
         <div class="person_search"><% Director.all.select{|director|director.name.downcase.include?(@search.downcase)}.each do |director| %>
             <div class="card" style="width: 18rem;">
@@ -109,11 +115,11 @@
             <% end %>
             </div>
             </div>
-        <% end %></div><br><br>
+        <% end %></div><br><hr class="hr"><br>
     <% end %>
     
 
-    <% if CrewMember.actor_names.any?{|name| name.downcase.include?(@search.downcase)} %>
+    <% if CrewMember.actor_names.any?{|name| name.downcase.include?(@search.downcase)} && @search != "" %>
         <h4>Actors:</h4><br>
         <div class="person_search"><% CrewMember.actors.select{|actor|actor.name.downcase.include?(@search.downcase)}.each do |actor| %>
             <div class="card" style="width: 18rem;">
@@ -127,10 +133,10 @@
             <% end %>
             </div>
             </div>
-        <% end %></div><br><br>
+        <% end %></div><br><hr class="hr"><br>
     <% end %>
 
-    <% if CrewMember.writer_names.any?{|name| name.downcase.include?(@search.downcase)} %>
+    <% if CrewMember.writer_names.any?{|name| name.downcase.include?(@search.downcase)} && @search != "" %>
         <h4>Writers:</h4><br>
         <div class="person_search"><% CrewMember.writers.select{|writer|writer.name.downcase.include?(@search.downcase)}.each do |writer| %>
             <div class="card" style="width: 18rem;">
@@ -149,4 +155,5 @@
     <% if Movie.downcase_names.any?{|name| name.include?(@search.downcase)} == false && Director.names.any?{|name| name.downcase.include?(@search.downcase)} == false && CrewMember.actor_names.any?{|name| name.downcase.include?(@search.downcase)} == false && CrewMember.writer_names.any?{|name| name.downcase.include?(@search.downcase)} == false %>
             No Results Found
     <% end %>
+<%end%></div>
 <%end%>

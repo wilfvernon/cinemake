@@ -14,12 +14,22 @@
  *= require_self
  */
 
-
+img{ 
+    object-fit: cover
+}
 
 h1  {color: white;
     text-align: center;}
 
 p    {color: white;}
+
+a:link, a:visited{
+    color: rgb(13, 128, 13);
+    }
+    
+    a:hover, a:active {
+      color: rgb(107, 29, 170);
+    }
 
 .hr{
     border-color: white
@@ -99,4 +109,17 @@ p    {color: white;}
     text-align: center;
     margin: auto 0;
     width: 100vw;
+}
+
+.profile_image{
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.profile_options{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
 }

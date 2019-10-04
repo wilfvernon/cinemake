@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   ###Posts###
 
   get '/directors/:id/posts', to: 'posts#director_index', as: 'director_posts'
-  get '/directors/:id/posts/new', to: 'posts#new', as: 'new_post'
+  get '/posts/new', to: 'posts#new', as: 'new_post'
   get '/posts/:id', to: 'posts#show', as: 'post'
 
   post '/posts', to: 'posts#create', as: 'posts'
