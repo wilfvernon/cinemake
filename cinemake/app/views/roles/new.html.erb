@@ -1,43 +1,32 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<h1>Casting Roles</h1>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <body>
-        <h1>Casting Roles</h1>
+<h5> <%="#{@crew_member.crew_member_type}: " %> </h5>
+<h5><%=@crew_member.name %></h5>
 
-        <h5> <%="#{@crew_member.crew_member_type}: " %> </h5>
-        <h5><%=@crew_member.name %></h5>
+  <% director = Director.find(session[:user]["id"]) %>
+  <% movies = director.movies %>
+  <% movie_ids = movies.map {|movie| movie.id} %>
+  <% movie_names = movies.map {|movie| movie.name} %>
 
-        <% director = Director.find(session[:user]["id"]) %>
-        <% movies = director.movies %>
-        <% movie_ids = movies.map {|movie| movie.id} %>
-        <% movie_names = movies.map {|movie| movie.name} %>
-
-        <h5>
-        <%=form_with model: @role, local: true do |f| %>
-            <%=f.hidden_field :crew_member_id, :value => @crew_member.id %>
-            <%=f.label :movie_id, 'Movie: ' %>
-            <%=f.collection_select(:movie_id, director.movies, :id, :name) %> 
-            <br><br>
-            <%=f.label :wage, "Wage (USD): " %>
-            <%=f.number_field :wage %>
-            <br><br>
-            <%=f.label :hire_date, "Hire Date: " %>
-            <%=f.date_field :hire_date %>
-            <br><br>
-            <%=f.label :name, "Name of Role: " %>
-            <%=f.text_field :name %>
-            <br><br>
-            <%=f.label :featured, "Featured Crew Member?" %>
-            <%= f.check_box :featured %>
-            <br><br><br>
-            <%=f.submit "Hire" %>
-        <% end %>
-        </h5>
-  </body>
-</html>
+<h5>
+  <%=form_with model: @role, local: true do |f| %>
+      <%=f.hidden_field :crew_member_id, :value => @crew_member.id %>
+      <%=f.label :movie_id, 'Movie: ' %>
+      <%=f.collection_select(:movie_id, director.movies, :id, :name) %> 
+      <br><br>
+      <%=f.label :wage, "Wage (USD): " %>
+      <%=f.number_field :wage %>
+      <br><br>
+     <%=f.label :hire_date, "Hire Date: " %>
+      <%=f.date_field :hire_date %>
+      <br><br>
+      <%=f.label :name, "Name of Role: " %>
+      <%=f.text_field :name %>
+      <br><br>
+      <%=f.label :featured, "Featured Crew Member?" %>
+      <%= f.check_box :featured %>
+      <br><br><br>
+      <%=f.submit "Hire" %>
+    <% end %>
+</h5>
+  

@@ -1,66 +1,55 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<h1><%= @project.name %></h1>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <body>   
-        <h1><%= @project.name %></h1>
+<h3>Who do you want to add?</h3>
+<%= form_with url: new_project_crew_member_path, local: true, method: 'get' do |form| %> 
+    <%= form.select :category, options_for_select(["Directors", "Actors", "Writers"]) %>
+    <%= form.submit "Search" %>
+<% end %>
 
-        <h3>Who do you want to add?</h3>
-        <%= form_with url: new_project_crew_member_path, local: true, method: 'get' do |form| %> 
-            <%= form.select :category, options_for_select(["Directors", "Actors", "Writers"]) %>
-            <%= form.submit "Search" %>
+<% if @project_crew_member.errors.any? %>
+    <ul><% @project_crew_member.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+    <% end %></ul>
+<% end %>
+
+<% if params[:category] %>
+<br>------------------------------------<br><br>
+    <% if params[:category] == "Directors" %>
+        <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
+            <%= f.hidden_field :project_id, :value => @project.id %>
+            <%= f.collection_select :director_id, @project.movie.directors, :id, :name %><br><br>
+            <%= f.label :job, 'Job in Project: ' %><br>
+            <%= f.text_area :job %><br><br>
+            <%= f.submit "Add" %>
         <% end %>
+    <% end %>
 
-        <% if @project_crew_member.errors.any? %>
-            <ul><% @project_crew_member.errors.full_messages.each do |error| %>
-                <li><%= error %></li>
-            <% end %></ul>
+    <% if params[:category] == "Actors" %>
+        <% if @project.movie.actors.any? %>
+            <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
+                <%= f.hidden_field :project_id, :value => @project.id %>
+                <%= f.collection_select :crew_member_id, @project.movie.actors, :id, :name %><br><br>
+                <%= f.label :job, 'Job in Project: ' %><br>
+                <%= f.text_area :job %><br><br>
+                <%= f.submit "Add" %>
+            <% end %>
+        <% else %>
+            No actors associated with <%= @project.movie.name %>
         <% end %>
+    <% end %>
 
-        <% if params[:category] %>
-        <br>------------------------------------<br><br>
-            <% if params[:category] == "Directors" %>
-                <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
-                    <%= f.hidden_field :project_id, :value => @project.id %>
-                    <%= f.collection_select :director_id, @project.movie.directors, :id, :name %><br><br>
-                    <%= f.label :job, 'Job in Project: ' %><br>
-                    <%= f.text_area :job %><br><br>
-                    <%= f.submit "Add" %>
-                <% end %>
+    <% if params[:category] == "Writers" %>
+        <% if @project.movie.writers.any? %>
+            <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
+                <%= f.hidden_field :project_id, :value => @project.id %>
+                <%= f.collection_select :crew_member_id, @project.movie.writers, :id, :name %><br><br>
+                <%= f.label :job, 'Job in Project: ' %><br>
+                <%= f.text_area :job %><br><br>
+                <%= f.submit "Add" %>
             <% end %>
-
-            <% if params[:category] == "Actors" %>
-                <% if @project.movie.actors.any? %>
-                    <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
-                        <%= f.hidden_field :project_id, :value => @project.id %>
-                        <%= f.collection_select :crew_member_id, @project.movie.actors, :id, :name %><br><br>
-                        <%= f.label :job, 'Job in Project: ' %><br>
-                        <%= f.text_area :job %><br><br>
-                        <%= f.submit "Add" %>
-                    <% end %>
-                <% else %>
-                    No actors associated with <%= @project.movie.name %>
-                <% end %>
-            <% end %>
-
-            <% if params[:category] == "Writers" %>
-                <% if @project.movie.writers.any? %>
-                    <%= form_with model: @project_crew_member, url: project_crew_members_path, local: true, method: :post do |f| %>
-                        <%= f.hidden_field :project_id, :value => @project.id %>
-                        <%= f.collection_select :crew_member_id, @project.movie.writers, :id, :name %><br><br>
-                        <%= f.label :job, 'Job in Project: ' %><br>
-                        <%= f.text_area :job %><br><br>
-                        <%= f.submit "Add" %>
-                    <% end %>
-                <% else %>
-                    No writers associated with <%= @project.movie.name%>
-                <% end %>
-            <% end %>
+        <% else %>
+            No writers associated with <%= @project.movie.name%>
         <% end %>
-     </body>
-</html>
+    <% end %>
+<% end %>
+    
