@@ -90,7 +90,6 @@
     <h3>"<%=@search%>"</h3>
     <hr class="hr">
     <%if Movie.downcase_names.any?{|name| name.include?(@search.downcase)} && @search != ""%>
-            <%byebug%>
         <h4>Movies:</h4><br>
         <% Movie.all.select{|movie|movie.name.downcase.include?(@search.downcase)}.each do |movie| %>
             <div><h3><%= link_to "#{movie.name} (#{movie.release_year})", movie_path(movie) %></h3>
