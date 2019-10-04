@@ -12,7 +12,7 @@
     </h6>
             
     <% unless @movie.writers.empty? %>
-        <div class ="flex-container">
+        <div>
             Writers:
             <% @movie.writers.each do |writer|%>
                 <%= "#{writer.name} (#{writer.movie_role(@movie).name})" %>

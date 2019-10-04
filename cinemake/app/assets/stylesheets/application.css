@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+textarea{ 
+    resize: none;
+}
 img{ 
     object-fit: cover
 }

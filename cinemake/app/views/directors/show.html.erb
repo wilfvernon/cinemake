@@ -21,7 +21,7 @@
     
     <% if @director.id != user.id %>
         <% if user.director_friends.include?(@director)%>
-            <%= link_to "Send Email", logout_path, method: :get%>
+            <%= @director.email%>
             |<br><br>
         <% elsif user.has_left_friend_request?(@director) %>
             <p>Friend Request Pending</p>

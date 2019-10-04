@@ -1,8 +1,11 @@
 <h1><%= @crew_member.name %></h1>
-
     <% if @crew_member.image %>
         <div class="flex-container">
-            <img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" class="profile_image">
+            <% if @crew_member.image == ""%>
+                <img src="https://www.durst-group.com/media/news/koenigbauer2019/30022-006-w800.jpg" class="profile_image">
+            <% else %>
+                <img src="https://image.tmdb.org/t/p/original/<%=@crew_member.image%>" class="profile_image">
+            <% end %>
         </div>
     <% end %>
     <br/>

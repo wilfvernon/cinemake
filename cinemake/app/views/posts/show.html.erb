@@ -7,7 +7,7 @@
     <%= link_to "#{@post.director.name}", director_path(@post.director) %>
     <%= "| Created #{@post.created_at.asctime[0..15]}" %>
     <% else %>
-        <%= "By: #{@post.director} | Created #{@post.created_at.asctime[0..15]}" %>
+        <%= "By: #{@post.director.name} | Created #{@post.created_at.asctime[0..15]}" %>
     <% end %>
 </h4>
 <br><hr class="hr">
