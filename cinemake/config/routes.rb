@@ -56,14 +56,13 @@ Rails.application.routes.draw do
   get '/movie/:id', to: 'movies#show', as: 'movie'
 
   post '/movies', to: 'movies#create'
-
+  
   ###Project Crew Members###
   get '/projects/:id/crew_members/new', to: 'project_crew_members#new', as: 'new_project_crew_member'
 
   post '/projects/:id/crew_members', to: 'project_crew_members#create', as: 'project_crew_members'
 
   ###Friends###
-  
   post '/friends', to: 'friends#create', as: 'friends'
   patch '/friends', to: 'friends#update'
 

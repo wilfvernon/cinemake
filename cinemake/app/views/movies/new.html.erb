@@ -17,7 +17,7 @@
                 <% end %>
             </ul>
         <% end %>
-
+        <h5>
         <%= form_with model: @movie, url: movies_path, local: true, method: :post do |form| %>
 
             <%= form.label :name, "Movie Name:" %>
@@ -33,5 +33,6 @@
             <%= form.submit "Create Movie" %>
 
         <% end %>
+        </h5>
     </body>
 </html>

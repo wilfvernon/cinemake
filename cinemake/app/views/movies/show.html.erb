@@ -30,12 +30,13 @@
                 <% end %> 
             </div>
         <% end %>
-            
+
+        <h6>    
         <% unless @movie.stars.empty? %>
             <div>Stars: 
             <%= @movie.star_array.join(",  ") %></div>
         <% end %>
-
+        </h6>
         <% link_to "Full Cast and Crew", movie_crew_members_path(@movie) %>
         <div>
         <% if @movie.director_ids.include?(session[:user]["id"]) %>
